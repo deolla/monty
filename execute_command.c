@@ -35,7 +35,7 @@ void execute_command(char *opcode, stack_t **stack, unsigned int line_number)
 }
 
 /**
- * proccess_file - execute instructions.
+ * process_file - execute instructions.
  * @filename: file name.
  *
  * Return: no return.
@@ -47,7 +47,7 @@ void process_file(const char *filename)
 	ssize_t line_length;
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
-	FILE* file = fopen(filename, "r");
+	FILE *file = fopen(filename, "r");
 
 	if (file == NULL)
 	{
@@ -71,6 +71,7 @@ void process_file(const char *filename)
 	while (stack != NULL)
 	{
 		stack_t *next = stack->next;
+
 		free(stack);
 		stack = next;
 	}

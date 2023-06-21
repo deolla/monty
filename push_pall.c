@@ -7,7 +7,7 @@
  *
  * Return: no return.
  */
-void push(stack_t** stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	int p;
 	char *values;
@@ -45,14 +45,15 @@ void push(stack_t** stack, unsigned int line_number)
 /**
  * pall - prints all values in the stack.
  * @stack: pointer to the head of stack.
+ * @line_number: line number in file.
  *
  * Return: no return.
  */
-void pall(stack_t** stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current;
 	(void)line_number;
-       
+
 	current = *stack;
 	if (current == NULL)
 		return;
