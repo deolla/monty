@@ -14,8 +14,8 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 
 	/* check if value is letters */
-	values = strtok(NULL, " \n\t\r");
-	if (values == NULL)
+	values = strtok(NULL, " \n");
+	if (values == NULL || !isdigit(*values))
 	{
 		fprintf(stderr, "L%u: usage: push interger\n", line_number);
 		exit(EXIT_FAILURE);
@@ -34,11 +34,16 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new_node->n = p;
 	new_node->prev = NULL;
-	new_node->next = *stack;
 
 	if (*stack != NULL)
+	{
 		(*stack)->prev = new_node;
-
+		new_node->next = *stack;
+	}
+	else
+	{
+		new_node->next = NULL;
+	}
 	*stack = new_node;
 }
 
