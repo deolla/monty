@@ -13,7 +13,6 @@ void push(stack_t **stack, unsigned int line_number)
 	char *values;
 	stack_t *new_node;
 
-	/* check if value is letters */
 	values = strtok(NULL, " \n");
 	if (values == NULL || !isdigit(*values))
 	{
@@ -21,16 +20,19 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	/* Check if argument is valid interger using atoi */
 	p = atoi(values);
 
-	/* Create new node */
 	new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		return;
+	}
+	if (values == NULL || !isdigit(*values))
+	{
+		fprintf(stderr, "L%u: usage: push interger\n", line_number);
+		return;
 	}
 	new_node->n = p;
 	new_node->prev = NULL;
