@@ -10,21 +10,23 @@
  */
 void mod(stack_t **stack, unsigned int line_number)
 {
-	int total;
+	int total, divisor;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: division by zero\n", line_number);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*stack)->n == 0)
+	divisor = (*stack)->n;
+
+	if (divisor == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	total = (*stack)->next->n %= (*stack)->n;
+	total = (*stack)->next->n % divisor;
 	pop(stack, line_number);
 	(*stack)->n = total;
 }
