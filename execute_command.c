@@ -24,6 +24,7 @@ void execute_command(char *opcode, stack_t **stack, unsigned int line_number)
 		{"div", div_op},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 	};
 
 	p = sizeof(instructions) / sizeof(instruction_t);
