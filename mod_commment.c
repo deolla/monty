@@ -10,21 +10,21 @@
  */
 void mod(stack_t **stack, unsigned int line_number)
 {
-	int total, divisor;
+	int total;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	divisor = (*stack)->n;
-	if (divisor == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	total = (*stack)->next->n % divisor;
+	total = (*stack)->next->n % (*stack)->n;
 	pop(stack, line_number);
 	(*stack)->n = total;
 }
