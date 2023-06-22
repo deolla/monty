@@ -19,6 +19,7 @@ void execute_command(char *opcode, stack_t **stack, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
 	};
 
 	p = sizeof(instructions) / sizeof(instruction_t);
