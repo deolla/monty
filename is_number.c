@@ -26,7 +26,7 @@ int is_number(char *str)
 /**
  * push_stack - adds a new node to the top of stack.
  * @stack: a pointer to the head of stack.
- * @i: value to store in the new node.
+ * @n: value to store in the new node.
  *
  * Return: no return.
  */
@@ -40,7 +40,7 @@ void push_stack(stack_t **stack, int n)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
 	new_node->n = n;
 	new_node->prev = NULL;
 	new_node->next = *stack;
