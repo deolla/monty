@@ -52,7 +52,8 @@ void process_file(const char *filename)
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
+		free(line);
+		return;
 	}
 
 	while ((line_length = getline(&line, &line_size, file)) != -1)
@@ -71,7 +72,6 @@ void process_file(const char *filename)
 	while (stack != NULL)
 	{
 		stack_t *next = stack->next;
-
 		free(stack);
 		stack = next;
 	}
