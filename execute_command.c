@@ -72,7 +72,9 @@ void process_file(const char *filename)
 	while (stack != NULL)
 	{
 		stack_t *next = stack->next;
+
 		free(stack);
 		stack = next;
 	}
+
 }
