@@ -7,11 +7,9 @@
  *
  * Return: no return.
  */
-void rotl(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *current, *last;
-
-	(void)line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
