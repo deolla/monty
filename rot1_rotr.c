@@ -9,24 +9,22 @@
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *last, *second_last;
+	stack_t *space = *stack, *pop;
 	(void)line_number;
-
-	if (*stack == NULL || (*stack)->next == NULL)
+	
+	if(*stack == NULL || (*stack)->next == NULL)
 		return;
 
-	last = *stack;
-	while (last->next != NULL)
-		last = last->next;
+	pop = (*stack)->next;
+	pop->prev = NULL;
+	while (space->next != NULL)
+		space = space->next;
 
-	second_last = last->prev;
-	last->prev = NULL;
-	last->next = *stack;
-	(*stack)->prev = last;
-	second_last->next = NULL;
-	*stack = last;
+	space->next = *stack;
+	(*stack)->next = NULL;
+	(*stack)->prev = space;
+	(*stack) = pop;
 }
-
 /**
  * rotr - rotates the stack to the bottom.
  * @stack: a pointer to the head of a stack.
