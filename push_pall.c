@@ -14,16 +14,10 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 
 	values = strtok(NULL, " \n");
-	if (values == NULL || !isdigit(*values))
-	{
-		fprintf(stderr, "L%u: usage: push interger\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 
 	p = atoi(values);
 
 	new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
