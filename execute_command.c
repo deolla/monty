@@ -53,7 +53,7 @@ void process_file(const char *filename)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		free(line);
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	while ((line_length = getline(&line, &line_size, file)) != -1)
