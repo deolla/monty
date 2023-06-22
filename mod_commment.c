@@ -10,6 +10,7 @@
  */
 void mod(stack_t **stack, unsigned int line_number)
 {
+	int total;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -23,6 +24,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	(*stack)->next->n %= (*stack)->n;
+	total = (*stack)->next->n %= (*stack)->n;
 	pop(stack, line_number);
+	(*stack)->n = total;
 }
