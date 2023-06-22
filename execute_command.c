@@ -10,17 +10,18 @@
  */
 void execute_command(char *opcode, stack_t **stack, unsigned int line_number)
 {
-	int i, pop;
+	int i, p;
 
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 	};
 
-	pop = sizeof(instructions) / sizeof(instruction_t);
+	p = sizeof(instructions) / sizeof(instruction_t);
 
-	for (i = 0; i < pop; i++)
+	for (i = 0; i < p; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
 		{
@@ -28,7 +29,7 @@ void execute_command(char *opcode, stack_t **stack, unsigned int line_number)
 			break;
 		}
 	}
-	if  (i == pop)
+	if  (i == p)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
