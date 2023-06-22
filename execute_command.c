@@ -70,7 +70,7 @@ void process_file(const char *filename)
 		line_number++;
 		opcode = strtok(line, " \n\t\r");
 
-		if (opcode == NULL)
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
 
 		execute_command(opcode, &stack, line_number);
