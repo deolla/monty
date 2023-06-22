@@ -9,39 +9,21 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int p;
-	char *values;
-	stack_t *new_node;
+	char *arg;
+	int m;
 
-	values = strtok(NULL, " \n");
+	arg = strtok(NULL, " \n");
 
-	p = atoi(values);
+	if (arg == NULL || !is_number(arg))
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		return;
-	}
-	if (values == NULL || !isdigit(*values))
-	{
-		fprintf(stderr, "L%u: usage: push interger\n", line_number);
-		return;
-	}
-	new_node->n = p;
-	new_node->prev = NULL;
-
-	if (*stack != NULL)
-	{
-		(*stack)->prev = new_node;
-		new_node->next = *stack;
-	}
-	else
-	{
-		new_node->next = NULL;
-	}
-	*stack = new_node;
+	m = atoi(arg);
+	push_stack(stack, m);
 }
+
 
 /**
  * pall - prints all values in the stack.
